@@ -1,1 +1,249 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --title: "Roboto", sans-serif;
+    --font: "Montserrat", sans-serif;
+
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+    
+    --cor-principal: #E85D04;
+    --cor-secundaria: #023E8A;
+    --cor-fundo: #202832;
+    --cor-fundo-claro: #F4F6F8;
+    --cor-header-footer: #151B22;
+
+    --cor-texto: #191919;
+    --cor-branco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-branco);
+}
+
+.topo {
+    background-color: var(--cor-header-footer);
+    padding: 20px 40px;
+}
+
+.topo-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-texto {
+    font-family: var(--title);
+    font-size: 26px;
+    font-weight: var(--bold);
+    text-decoration: none;
+    color: var(--cor-branco);
+}
+
+.logo-texto span {
+    color: var(--cor-principal);
+}
+
+.menu {
+    display: flex;
+    gap: 50px;
+}
+
+.menu a {
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: var(--regular);
+    transition: 0.3s;
+
+    &:hover{
+        color: var(--cor-principal);
+    }
+}
+
+.secao-limite {
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.secao-limite h2 {
+    font-family: var(--title);
+    font-size: 32px;
+    font-weight: var(--bold);
+    margin-bottom: 35px;
+    padding-left: 15px;
+}
+
+.section-escura {
+    background-color: var(--cor-fundo);
+    padding: 60px 40px;
+}
+
+.section-escura h2 {
+    color: var(--cor-branco);
+}
+
+.conteudo {
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.texto-bloco {
+    max-width: 700px;
+}
+
+.texto-bloco p {
+    font-size: 18px;
+    font-weight: var(--regular);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--cor-branco);
+}
+
+.destaque-box {
+    background-color: var(--cor-header-footer);
+    padding: 20px 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.destaque-box h3 {
+    font-family: var(--title);
+    font-size: 18px;
+    font-weight: var(--bold);
+    color: var(--cor-principal);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.destaque-box p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.img-bloco img {
+    width: 500px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.section-clara {
+    background-color: var(--cor-fundo-claro);
+    padding: 60px 40px;
+}
+
+.section-clara h2 {
+    color: var(--cor-texto);
+}
+
+.cards-lista {
+    padding-left: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+    list-style: none;
+}
+
+.card {
+    background-color: var(--cor-branco);
+    color: var(--cor-texto);
+    width: 350px;
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-family: var(--title);
+    font-size: 20px;
+    font-weight: var(--bold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.card p {
+    font-size: 15px;
+    font-weight: var(--regular);
+    color: var(--cor-texto);
+    line-height: 1.5;
+}
+
+footer {
+    background-color: var(--cor-header-footer);
+    color: var(--cor-branco);
+    padding: 60px 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-contato {
+    max-width: 350px;
+}
+
+.footer-info {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.footer-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-coluna h3, .footer-coluna h4 {
+    font-family: var(--title);
+    font-size: 20px;
+    font-weight: var(--bold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: var(--cor-principal);
+}
+
+.footer-coluna p, .footer-coluna a {
+    font-size: 16px;
+    font-weight: var(--light);
+    color: var(--cor-branco);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: 0.3s;
+}
+
+.footer-coluna a:hover {
+    color: var(--cor-principal);
+}
