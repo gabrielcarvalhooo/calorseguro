@@ -76,3 +76,80 @@ indicadores.forEach((bolinha) => {
 });
 
 atualizarCarrossel();
+
+const formAlerta = document.getElementById("formAlerta");
+const nomeAlerta = document.getElementById("nomeAlerta");
+const emailAlerta = document.getElementById("emailAlerta");
+const regiaoAlerta = document.getElementById("regiaoAlerta");
+const feedbackAlerta = document.getElementById("feedbackAlerta");
+
+function exibirErroFormulario(input, mensagem) {
+    input.classList.add("campo-invalido");
+    feedbackAlerta.textContent = mensagem;
+    feedbackAlerta.classList.remove("sucesso");
+    feedbackAlerta.classList.add("erro");
+    input.focus();
+}
+
+function limparEstadoInputs(inputs) {
+    inputs.forEach(function (input) {
+        input.classList.remove("campo-invalido");
+    });
+}
+
+if (formAlerta) {
+    const listaInputs = [nomeAlerta, emailAlerta, regiaoAlerta];
+
+    formAlerta.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        limparEstadoInputs(listaInputs);
+
+        const nomeValor = nomeAlerta.value.trim();
+        const emailValor = emailAlerta.value.trim();
+        const regiaoValor = regiaoAlerta.value.trim();
+
+        // 1. Verifica campos vazios
+        if (nomeValor === "") {
+            exibirErroFormulario(nomeAlerta, "Preencha o campo \"Nome completo\" antes de enviar.");
+            return;
+        }
+
+        if (emailValor === "") {
+            exibirErroFormulario(emailAlerta, "Preencha o campo \"E-mail\" antes de enviar.");
+            return;
+        }
+
+        if (regiaoValor === "") {
+            exibirErroFormulario(regiaoAlerta, "Preencha o campo \"Bairro ou região\" antes de enviar.");
+            return;
+        }
+
+        // 2. Valida tamanho mínimo do nome
+        if (nomeValor.length < 2) {
+            exibirErroFormulario(nomeAlerta, "Digite um nome válido com pelo menos 2 caracteres.");
+            return;
+        }
+
+        // 3. Valida formato do e-mail
+        const padraoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!padraoEmail.test(emailValor)) {
+            exibirErroFormulario(emailAlerta, "Digite um endereço de e-mail válido (ex.: nome@email.com).");
+            return;
+        }
+
+        // 4. Sucesso
+        feedbackAlerta.textContent = `Alerta ativado com sucesso para ${nomeValor} na região de ${regiaoValor}!`;
+        feedbackAlerta.classList.remove("erro");
+        feedbackAlerta.classList.add("sucesso");
+        formAlerta.reset();
+    });
+
+    // Remove o destaque vermelho em tempo real enquanto o usuário corrige
+    listaInputs.forEach(function (input) {
+        input.addEventListener("input", function () {
+            if (input.value.trim() !== "") {
+                input.classList.remove("campo-invalido");
+            }
+        });
+    });
+}
