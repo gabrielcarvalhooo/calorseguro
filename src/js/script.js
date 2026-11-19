@@ -148,3 +148,72 @@ if (formAlerta) {
         });
     });
 }
+
+const inputTemperatura = document.getElementById("inputTemperatura");
+const selectCenario = document.getElementById("selectCenario");
+const btnSimularTemp = document.getElementById("btnSimularTemp");
+const btnResetTemp = document.getElementById("btnResetTemp");
+
+const painelResultadoDom = document.getElementById("painelResultadoDom");
+const badgeRiscoDom = document.getElementById("badgeRiscoDom");
+const valorTempDom = document.getElementById("valorTempDom");
+const tituloStatusDom = document.getElementById("tituloStatusDom");
+const descricaoStatusDom = document.getElementById("descricaoStatusDom");
+
+function atualizarSimulacaoDom(temperaturaInformada, cenarioSelecionado) {
+    if (!painelResultadoDom) return;
+
+    const temp = Number(temperaturaInformada);
+
+    if (Number.isNaN(temp)) {
+        tituloStatusDom.textContent = "Temperatura inválida";
+        descricaoStatusDom.textContent = "Digite um número válido para simular a condição térmica.";
+        return;
+    }
+
+    valorTempDom.textContent = temp.toFixed(1) + "°C";
+
+    painelResultadoDom.classList.remove("risco-normal", "risco-alto", "risco-critico");
+
+    if (temp >= 35.0) {
+        painelResultadoDom.classList.add("risco-critico");
+        badgeRiscoDom.textContent = "CRÍTICO / EXTREMO";
+        tituloStatusDom.textContent = "Perigo térmico — calor extremo";
+        descricaoStatusDom.textContent =
+            "Cenário: " + cenarioSelecionado + ". Temperatura igual ou acima de 35.0°C. Evite exposição direta ao sol, busque sombra e reforce a hidratação.";
+    } else if (temp >= 30.0) {
+        painelResultadoDom.classList.add("risco-alto");
+        badgeRiscoDom.textContent = "ATENÇÃO / MODERADO";
+        tituloStatusDom.textContent = "Atenção ao calor moderado";
+        descricaoStatusDom.textContent =
+            "Cenário: " + cenarioSelecionado + ". Faixa de 30.0°C a 34.9°C. Mantenha a hidratação frequente e faça pausas em locais ventilados.";
+    } else {
+        painelResultadoDom.classList.add("risco-normal");
+        badgeRiscoDom.textContent = "NORMAL / SEGURO";
+        tituloStatusDom.textContent = "Condição segura abaixo de 30.0°C";
+        descricaoStatusDom.textContent =
+            "Cenário: " + cenarioSelecionado + ". Temperatura abaixo de 30.0°C. Mantenha hábitos normais de hidratação e acompanhamento.";
+    }
+}
+
+if (btnSimularTemp && inputTemperatura && selectCenario) {
+    btnSimularTemp.addEventListener("click", function () {
+        atualizarSimulacaoDom(inputTemperatura.value, selectCenario.value);
+    });
+
+    selectCenario.addEventListener("change", function () {
+        atualizarSimulacaoDom(inputTemperatura.value, selectCenario.value);
+    });
+}
+
+if (btnResetTemp && inputTemperatura && selectCenario) {
+    btnResetTemp.addEventListener("click", function () {
+        inputTemperatura.value = 25.0;
+        selectCenario.value = "Trabalho ao ar livre";
+        atualizarSimulacaoDom(25.0, "Trabalho ao ar livre");
+    });
+}
+
+if (inputTemperatura && selectCenario) {
+    atualizarSimulacaoDom(inputTemperatura.value, selectCenario.value);
+}
