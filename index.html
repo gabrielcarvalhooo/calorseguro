@@ -166,6 +166,65 @@
             </div>
         </div>
     </section>
+    
+    <section id="alertas" class="alerta-secao">
+        <div class="secao-limite">
+            <div class="alerta-cabecalho">
+                <span class="alerta-tag">MONITORAMENTO PREVENTIVO</span>
+                <h2>ALERTAS DE CALOR EXTREMO</h2>
+                <p>Receba avisos quando a temperatura subir na sua região e saiba como se proteger antes que o calor vire risco.</p>
+            </div>
+
+            <div class="alerta-grade">
+                <div class="alerta-painel-lateral">
+                    <div class="alerta-item-info">
+                        <i class="bx bx-sun"></i>
+                        <div>
+                            <h3>Avisos em dias críticos</h3>
+                            <p>Notificações focadas em picos de calor e exposição prolongada ao sol.</p>
+                        </div>
+                    </div>
+
+                    <div class="alerta-item-info">
+                        <i class="bx bx-water-drop"></i>
+                        <div>
+                            <h3>Rotina de hidratação</h3>
+                            <p>Dicas rápidas de água e pausa na sombra para quem trabalha ou circula na rua.</p>
+                        </div>
+                    </div>
+
+                    <div class="alerta-item-info">
+                        <i class="bx bx-location"></i>
+                        <div>
+                            <h3>Foco na sua área</h3>
+                            <p>Cadastro simples por bairro ou região para acompanhar o cenário local.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="formAlerta" class="alerta-form" novalidate>
+                    <div class="campo-grupo">
+                        <label for="nomeAlerta">Seu nome</label>
+                        <input type="text" id="nomeAlerta" name="nome" placeholder="Como podemos te chamar?">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="emailAlerta">Seu e-mail</label>
+                        <input type="email" id="emailAlerta" name="email" placeholder="voce@exemplo.com">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="regiaoAlerta">Bairro ou região</label>
+                        <input type="text" id="regiaoAlerta" name="regiao" placeholder="Onde você passa mais tempo no dia?">
+                    </div>
+
+                    <p id="feedbackAlerta" class="feedback-form" aria-live="polite"></p>
+
+                    <button type="submit" class="btn-enviar-alerta">Ativar alertas</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-contato">
